@@ -1,0 +1,36 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Large media files (원본 영상/오디오는 별도 관리)
+# content/assets/audio/*.wav
+# content/assets/audio/*.mp3
+# *.mov
+# *.mp4
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Personal notes (개인 메모는 push하지 않음)
+members/*/personal/
+members/*/_drafts/
+
+# Secrets
+.env
+.env.local
+*.key
+credentials.json
