@@ -34,3 +34,123 @@ members/*/_drafts/
 .env.local
 *.key
 credentials.json
+# Certificate files
+venv/
+# Windows
+.uv_cache/
+*.backup/
+# Secrets and Credentials (CRITICAL)
+.AppleDouble
+*.pfx
+# Logs & Temporary Files
+# Build Artifacts & Distribution
+*.rdb
+*-key.*
+node_modules/
+# Linux
+*.tsbuildinfo
+*.sln
+!.env.example
+.VolumeIcon.icns
+# Updated: 2026-01-10
+.claude/local/
+# Build Tools & Frameworks
+# Version: 0.33.0
+.ruff_cache/
+*.sqlite
+# Deployment & CI/CD
+secret-*.*
+# Node.js (for docs/Nextra)
+dist/
+# Test Coverage
+.moai-backups/
+.claude/skills/*/*/*token*
+# FIXED: Issue #237 - Replaced overly broad *key* and *secret* patterns
+.netlify/
+.aws/config
+# Skill-specific credentials
+*.suo
+# Private keys (specific patterns to avoid false positives)
+.tscache/
+.firebase/
+*.egg
+.venv/
+*.njsproj
+*.sublime-project
+dist-ssr/
+.claude/skills/*/.env*
+htmlcov/
+*.sqlite3
+.claude/skills/*/*/*secret*
+.#*
+# Cloud provider credentials
+.claude/settings.local.json
+*_secret=*
+.claude/settings.local.*.json
+logs/
+*.backup
+.claude/.env.local*
+*.dbm
+# Virtual Environments
+*.pem
+out/
+# OS Files
+.DocumentRevisions-V100
+.fseventsd
+env/
+*-secret-key.*
+*.secret.*
+.env.*
+*_token=*
+# Python Cache & Bytecode
+*.pyd
+# Mac
+# ===========================================
+.coverage
+*_secret.*
+*.db
+*_backup_*/
+# Environment files
+# ============================================
+secret-key-*
+*-secret.*
+.vercel/
+# Backups
+private-key*
+__pycache__/
+# IDE & Editors
+*.sublime-workspace
+.directory
+*-backup/
+*.pyo
+*.key.*
+.env/
+# Credential patterns in environment files
+# Claude Code Configuration
+*.pyc
+[Dd]esktop.ini
+*.bak
+.uv-cache/
+*.sw?
+.mypy_cache/
+.nuxt/
+.next/
+coverage.json
+*.jks
+# MoAI-ADK Package Distribution .gitignore
+.pytest_cache/
+build/
+.claude/skills/*/secrets/
+*.egg-info/
+*.p12
+# Purpose: Essential patterns for user projects
+*_key.*
+api-key-*
+.claude/skills/*/*/*key*
+.cursor/
+.aws/credentials
+*-api-key.*
+.TemporaryItems
+.turbo/
+.LSOverride
+.claude/plans/

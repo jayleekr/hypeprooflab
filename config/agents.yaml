@@ -1,0 +1,34 @@
+# Agent Configuration
+# Defines all available agents with their capabilities and settings
+
+agents:
+  research_agent:
+    name: "Research Agent"
+    role: "Web search and information gathering"
+    tools:
+      - Read
+      - WebSearch
+      - WebFetch
+    max_retries: 3
+    timeout: 300
+    model: "claude-sonnet-4-20250514"
+
+  analysis_agent:
+    name: "Analysis Agent"
+    role: "Research analysis and insight synthesizer"
+    tools:
+      - Read
+      - Grep
+    max_retries: 3
+    timeout: 240
+    model: "claude-sonnet-4-20250514"
+
+  writing_agent:
+    name: "Writing Agent"
+    role: "Content creation and storytelling specialist"
+    tools:
+      - Write
+      - Edit
+    max_retries: 3
+    timeout: 300
+    model: "claude-sonnet-4-20250514"

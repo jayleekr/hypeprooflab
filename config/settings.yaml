@@ -1,0 +1,40 @@
+# System Settings
+# Global configuration for HypeProof Lab
+
+system:
+  # Environment
+  environment: "development"  # development, staging, production
+
+  # Logging
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_format: "json"  # json, text
+
+  # API Settings
+  default_model: "claude-sonnet-4-20250514"
+  max_retries: 3
+  timeout: 300  # seconds
+
+  # Parallel Execution
+  max_parallel_agents: 3
+  enable_parallel: true
+
+  # Context Management
+  max_context_tokens: 100000
+  context_isolation: true
+
+  # Error Handling
+  retry_on_timeout: true
+  retry_backoff_multiplier: 2.0
+  max_retry_delay: 60  # seconds
+
+  # Performance
+  enable_caching: false  # Phase 2 feature
+  cache_ttl: 3600  # seconds
+
+  # Quality Gates
+  enable_quality_checks: true
+  min_test_coverage: 85  # percentage
+
+  # Monitoring (Phase 2)
+  enable_monitoring: false
+  metrics_endpoint: null
