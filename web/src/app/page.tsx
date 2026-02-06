@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 1, y: 0 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }
 };
@@ -40,7 +40,7 @@ function Logo() {
   return (
     <motion.div 
       className="flex items-center gap-3"
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
@@ -132,7 +132,7 @@ function Hero() {
       {/* Scroll indicator */}
       <motion.div 
         className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 1, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
@@ -161,7 +161,7 @@ function FeatureCard({ icon, title, description, delay }: {
   return (
     <motion.div
       className="glass p-8 group cursor-pointer"
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 1, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay }}
@@ -200,7 +200,7 @@ function Features() {
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
@@ -229,7 +229,7 @@ function TeamMember({ name, role, credential, delay }: {
   return (
     <motion.div
       className="text-center"
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 1, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
@@ -261,7 +261,7 @@ function Team() {
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
@@ -301,7 +301,7 @@ export default function Home() {
       {/* Navigation */}
       <motion.nav 
         className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 1, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
