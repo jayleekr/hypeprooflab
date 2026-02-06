@@ -249,9 +249,9 @@ function TeamMember({ name, role, credential, delay }: {
 
 function Team() {
   const members = [
-    { name: "Jay", role: "Host / Tech", credential: "Silicon Valley Sr. Engineer" },
+    { name: "Jay", role: "Host / Tech", credential: "Silicon Valley Staff Engineer" },
     { name: "지웅", role: "Tech / Panel", credential: "Physics PhD, Quant Dev" },
-    { name: "진용", role: "Tech / Panel", credential: "Big Tech Staff Engineer" },
+    { name: "진용", role: "Tech / Panel", credential: "AI Engineer @Remember, 물리학 석사" },
     { name: "TJ", role: "Content / Edit" },
     { name: "Kiwon", role: "Marketing" },
   ];
