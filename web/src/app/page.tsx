@@ -49,7 +49,7 @@ function Logo() {
       <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
         <span className="text-white font-bold text-sm">H</span>
       </div>
-      <span className="text-white font-semibold text-lg tracking-tight">HypeProof</span>
+      <span className="text-white font-semibold text-lg tracking-tight">HypeProof AI</span>
     </motion.div>
   );
 }
@@ -106,7 +106,7 @@ function Hero() {
             variants={fadeInUp}
             className="text-6xl md:text-8xl font-bold tracking-tight"
           >
-            <span className="text-gradient">HypeProof</span>
+            <span className="text-gradient">HypeProof AI</span>
           </motion.h1>
           
           {/* Tagline */}
@@ -381,7 +381,7 @@ function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <Logo />
         <p className="text-zinc-600 text-sm">
-          © 2026 HypeProof Lab. All rights reserved.
+          © 2026 HypeProof AI. All rights reserved.
         </p>
       </div>
     </footer>
