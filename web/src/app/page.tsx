@@ -20,14 +20,16 @@ const stagger = {
 function FloatingOrb({ className, delay = 0 }: { className: string; delay?: number }) {
   return (
     <motion.div
-      className={`absolute rounded-full blur-3xl ${className}`}
+      className={`absolute rounded-full blur-[100px] ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={{
-        y: [0, -30, 0],
-        scale: [1, 1.1, 1],
-        opacity: [0.3, 0.5, 0.3],
+        y: [0, -50, 0],
+        x: [0, 20, 0],
+        scale: [1, 1.2, 1],
+        opacity: [0.4, 0.7, 0.4],
       }}
       transition={{
-        duration: 8,
+        duration: 10,
         repeat: Infinity,
         ease: "easeInOut",
         delay,
@@ -76,10 +78,11 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Floating orbs */}
-      <FloatingOrb className="w-[600px] h-[600px] bg-purple-600/20 -top-40 -left-40" delay={0} />
-      <FloatingOrb className="w-[500px] h-[500px] bg-indigo-600/20 -bottom-20 -right-20" delay={2} />
-      <FloatingOrb className="w-[300px] h-[300px] bg-violet-600/20 top-1/2 left-1/4" delay={4} />
+      {/* Floating orbs - enhanced visibility */}
+      <FloatingOrb className="w-[800px] h-[800px] bg-purple-600/30 -top-60 -left-60" delay={0} />
+      <FloatingOrb className="w-[600px] h-[600px] bg-indigo-600/30 -bottom-40 -right-40" delay={2} />
+      <FloatingOrb className="w-[400px] h-[400px] bg-violet-500/25 top-1/3 left-1/3" delay={4} />
+      <FloatingOrb className="w-[300px] h-[300px] bg-blue-600/20 bottom-1/4 right-1/4" delay={6} />
       
       <motion.div 
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
@@ -117,14 +120,28 @@ function Hero() {
           </motion.p>
           
           {/* CTA */}
-          <motion.div variants={fadeInUp} className="pt-8">
-            <motion.button
-              className="glass px-8 py-4 text-white font-medium rounded-full border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300"
+          <motion.div variants={fadeInUp} className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.a
+              href="https://discord.gg/clawd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass px-8 py-4 text-white font-medium rounded-full border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 inline-flex items-center gap-2"
               whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
               whileTap={{ scale: 0.98 }}
             >
-              Join the Lab →
-            </motion.button>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              Join Discord
+            </motion.a>
+            <motion.a
+              href="mailto:jayleekr0125@gmail.com"
+              className="px-8 py-4 text-zinc-400 font-medium rounded-full border border-zinc-700 hover:border-zinc-500 hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact Us
+            </motion.a>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -160,18 +177,38 @@ function FeatureCard({ icon, title, description, delay }: {
 }) {
   return (
     <motion.div
-      className="glass p-8 group cursor-pointer"
-      initial={{ opacity: 1, y: 40 }}
+      className="relative glass p-8 group cursor-pointer overflow-hidden"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      whileHover={{ 
+        y: -8, 
+        transition: { duration: 0.3 },
+      }}
     >
-      <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+      {/* Hover glow effect */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: "radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1), transparent 70%)" }}
+      />
+      
+      <motion.div 
+        className="text-5xl mb-6"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        {icon}
+      </motion.div>
+      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
         {title}
       </h3>
-      <p className="text-zinc-500 leading-relaxed">{description}</p>
+      <p className="text-zinc-400 leading-relaxed">{description}</p>
+      
+      {/* Bottom gradient line on hover */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+      />
     </motion.div>
   );
 }
@@ -196,7 +233,7 @@ function Features() {
   ];
 
   return (
-    <section className="py-32 px-6">
+    <section id="features" className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -220,44 +257,104 @@ function Features() {
   );
 }
 
+const memberColors: Record<string, string> = {
+  "Jay": "from-purple-500 to-indigo-600",
+  "Ryan": "from-blue-500 to-cyan-500",
+  "JY": "from-emerald-500 to-teal-500",
+  "TJ": "from-orange-500 to-red-500",
+  "Kiwon": "from-pink-500 to-rose-500",
+};
+
 function TeamMember({ name, role, credential, delay }: { 
   name: string; 
   role: string; 
   credential?: string;
   delay: number;
 }) {
+  const gradient = memberColors[name] || "from-purple-500/20 to-indigo-500/20";
+  
   return (
     <motion.div
-      className="text-center"
-      initial={{ opacity: 1, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+      className="text-center group"
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <motion.div 
-        className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 flex items-center justify-center"
-        whileHover={{ scale: 1.1, borderColor: "rgba(168, 85, 247, 0.5)" }}
+        className={`w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br ${gradient} p-[2px] cursor-pointer`}
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <span className="text-2xl font-bold text-white/80">{name[0]}</span>
+        <div className="w-full h-full rounded-full bg-zinc-950 flex items-center justify-center">
+          <span className="text-2xl font-bold text-white">{name[0]}</span>
+        </div>
       </motion.div>
-      <h4 className="text-white font-medium">{name}</h4>
-      <p className="text-zinc-500 text-sm">{role}</p>
-      {credential && <p className="text-zinc-600 text-xs mt-1">{credential}</p>}
+      <motion.h4 
+        className="text-white font-semibold text-lg"
+        whileHover={{ color: "#a855f7" }}
+      >
+        {name}
+      </motion.h4>
+      <p className="text-zinc-400 text-sm mt-1">{role}</p>
+      {credential && (
+        <p className="text-zinc-600 text-xs mt-1 max-w-[180px] mx-auto leading-relaxed">
+          {credential}
+        </p>
+      )}
     </motion.div>
+  );
+}
+
+function Philosophy() {
+  return (
+    <section className="py-32 px-6 relative overflow-hidden">
+      <FloatingOrb className="w-[500px] h-[500px] bg-indigo-600/20 -left-40 top-0" delay={1} />
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <motion.p 
+            className="text-2xl md:text-3xl text-zinc-300 leading-relaxed font-light"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            &ldquo;우리는 <span className="text-white font-medium">Hype</span>를 쫓지 않습니다.
+            <br />
+            <span className="text-purple-400 font-medium">증명</span>합니다.&rdquo;
+          </motion.p>
+          
+          <motion.div 
+            className="mt-12 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-purple-500 to-transparent"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+          />
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
 function Team() {
   const members = [
-    { name: "Jay", role: "Host / Tech", credential: "Silicon Valley Staff Engineer" },
-    { name: "지웅", role: "Tech / Panel", credential: "Physics PhD, Quant Dev" },
-    { name: "진용", role: "Tech / Panel", credential: "AI Engineer @Remember, 물리학 석사" },
-    { name: "TJ", role: "Content / Edit" },
-    { name: "Kiwon", role: "Marketing" },
+    { name: "Jay", role: "Lead / Tech", credential: "Staff Engineer @ Silicon Valley" },
+    { name: "Ryan", role: "Research / Data", credential: "Physics PhD, Quant Dev" },
+    { name: "JY", role: "Research / AI", credential: "AI Engineer, M.S. Physics" },
+    { name: "TJ", role: "Content / Media", credential: "Ex-Founder, Media Specialist" },
+    { name: "Kiwon", role: "Marketing", credential: "GWU, Global Marketing" },
   ];
 
   return (
-    <section className="py-32 px-6">
+    <section id="team" className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -268,7 +365,7 @@ function Team() {
           <h2 className="text-4xl font-bold text-white mb-4">The Team</h2>
         </motion.div>
         
-        <div className="flex flex-wrap justify-center gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6">
           {members.map((member, i) => (
             <TeamMember key={member.name} {...member} delay={i * 0.1} />
           ))}
@@ -300,16 +397,15 @@ export default function Home() {
       
       {/* Navigation */}
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-        initial={{ opacity: 1, y: -20 }}
+        className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-zinc-950/50 backdrop-blur-lg border-b border-white/5"
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Logo />
           <div className="hidden md:flex items-center gap-8">
-            <NavLink href="#research">Research</NavLink>
-            <NavLink href="#content">Content</NavLink>
+            <NavLink href="#features">What We Do</NavLink>
             <NavLink href="#team">Team</NavLink>
           </div>
         </div>
@@ -318,6 +414,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <Philosophy />
         <Team />
       </main>
       
