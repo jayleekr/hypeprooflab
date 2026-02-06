@@ -170,7 +170,7 @@ function FeatureCard({ icon, title, description, delay }: {
 }) {
   return (
     <motion.div
-      className="relative glass p-8 group cursor-pointer overflow-hidden"
+      className="relative glass p-8 group cursor-pointer overflow-hidden min-h-[240px] flex flex-col"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -186,16 +186,16 @@ function FeatureCard({ icon, title, description, delay }: {
       />
       
       <motion.div 
-        className="text-5xl mb-6"
+        className="text-5xl mb-5"
         whileHover={{ scale: 1.1, rotate: 5 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         {icon}
       </motion.div>
-      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
+      <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-purple-400 transition-colors duration-300">
         {title}
       </h3>
-      <p className="text-zinc-400 leading-relaxed">{description}</p>
+      <p className="text-zinc-400 leading-relaxed text-[15px] flex-1">{description}</p>
       
       <motion.div 
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
@@ -209,17 +209,17 @@ function Features() {
     {
       icon: "🔬",
       title: "Research",
-      description: "Pushing AI boundaries through daily experiments and rigorous validation"
+      description: "Pushing AI boundaries through daily experiments and rigorous validation methods."
     },
     {
       icon: "🎙️",
-      title: "Content",
-      description: "Audio-first content delivering actionable insights"
+      title: "Podcast",
+      description: "Deep-dive conversations on AI trends, tools, and the people building tomorrow."
     },
     {
       icon: "📖",
       title: "Education",
-      description: "New paradigms for learning in the age of AI"
+      description: "Designing new paradigms for learning in the age of artificial intelligence."
     }
   ];
 
