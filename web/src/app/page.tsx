@@ -435,7 +435,7 @@ function Philosophy() {
           >
             &ldquo;We don&apos;t chase <span className="text-white font-medium">Hype</span>.
             <br />
-            We <span className="text-purple-400 font-medium">prove</span> it.&rdquo;
+            We <span className="text-purple-400 font-medium">Prove</span> it.&rdquo;
           </motion.p>
           
           <motion.div 
