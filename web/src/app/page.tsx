@@ -521,7 +521,6 @@ export default function Home() {
           <Logo />
           <div className="hidden md:flex items-center gap-8">
             <NavLink href="#features">What We Do</NavLink>
-            <NavLink href="#columns">Columns</NavLink>
             <NavLink href="#team">Team</NavLink>
           </div>
         </div>
@@ -530,7 +529,6 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-        <Columns />
         <Philosophy />
         <Team />
       </main>
