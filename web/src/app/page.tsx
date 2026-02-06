@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 const fadeInUp = {
   initial: { opacity: 1, y: 0 },
@@ -40,17 +41,19 @@ function FloatingOrb({ className, delay = 0 }: { className: string; delay?: numb
 
 function Logo() {
   return (
-    <motion.div 
-      className="flex items-center gap-3"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
-        <span className="text-white font-bold text-sm">H</span>
-      </div>
-      <span className="text-white font-semibold text-lg tracking-tight">HypeProof AI</span>
-    </motion.div>
+    <Link href="/">
+      <motion.div 
+        className="flex items-center gap-3 cursor-pointer"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+          <span className="text-white font-bold text-sm">H</span>
+        </div>
+        <span className="text-white font-semibold text-lg tracking-tight">HypeProof AI</span>
+      </motion.div>
+    </Link>
   );
 }
 
@@ -78,7 +81,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Floating orbs - enhanced visibility */}
+      {/* Floating orbs */}
       <FloatingOrb className="w-[800px] h-[800px] bg-purple-600/30 -top-60 -left-60" delay={0} />
       <FloatingOrb className="w-[600px] h-[600px] bg-indigo-600/30 -bottom-40 -right-40" delay={2} />
       <FloatingOrb className="w-[400px] h-[400px] bg-violet-500/25 top-1/3 left-1/3" delay={4} />
@@ -114,9 +117,9 @@ function Hero() {
             variants={fadeInUp}
             className="text-xl md:text-2xl text-zinc-500 max-w-2xl mx-auto leading-relaxed"
           >
-            AI가 문제를 푼다.
+            AI solves problems.
             <br />
-            <span className="text-zinc-300">인간은 문제를 정의한다.</span>
+            <span className="text-zinc-300">Humans define them.</span>
           </motion.p>
           
           {/* CTA */}
@@ -187,7 +190,6 @@ function FeatureCard({ icon, title, description, delay }: {
         transition: { duration: 0.3 },
       }}
     >
-      {/* Hover glow effect */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{ background: "radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1), transparent 70%)" }}
@@ -205,7 +207,6 @@ function FeatureCard({ icon, title, description, delay }: {
       </h3>
       <p className="text-zinc-400 leading-relaxed">{description}</p>
       
-      {/* Bottom gradient line on hover */}
       <motion.div 
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
       />
@@ -218,17 +219,17 @@ function Features() {
     {
       icon: "🔬",
       title: "Research",
-      description: "AI의 한계를 매일 밀어붙이는 실험과 검증"
+      description: "Pushing AI boundaries through daily experiments and rigorous validation"
     },
     {
       icon: "🎙️",
       title: "Content",
-      description: "Audio-First 콘텐츠로 인사이트 전달"
+      description: "Audio-first content delivering actionable insights"
     },
     {
       icon: "📖",
       title: "Education",
-      description: "AI 시대의 새로운 교육 패러다임"
+      description: "New paradigms for learning in the age of AI"
     }
   ];
 
@@ -243,13 +244,129 @@ function Features() {
         >
           <h2 className="text-4xl font-bold text-white mb-4">What We Do</h2>
           <p className="text-zinc-500 max-w-xl mx-auto">
-            세 가지 트랙으로 AI의 미래를 탐구합니다
+            Three tracks to explore the future of AI
           </p>
         </motion.div>
         
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((feature, i) => (
             <FeatureCard key={feature.title} {...feature} delay={i * 0.1} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Sample columns data - in production, this would come from a CMS or API
+const categoryStyles: Record<string, { gradient: string; icon: string }> = {
+  "Research": { gradient: "from-purple-600/50 to-indigo-900/50", icon: "🔬" },
+  "Analysis": { gradient: "from-blue-600/50 to-cyan-900/50", icon: "📊" },
+  "Education": { gradient: "from-emerald-600/50 to-teal-900/50", icon: "📚" },
+  "Opinion": { gradient: "from-orange-600/50 to-red-900/50", icon: "💭" },
+};
+
+const columns = [
+  {
+    slug: "claude-opus-4-6-alignment",
+    title: "Claude Opus 4.6: When Safety Meets Soul",
+    excerpt: "Anthropic's latest release isn't just an upgrade—it's a philosophical statement about where AI alignment is heading.",
+    date: "2026-02-06",
+    category: "Research",
+  },
+  {
+    slug: "openai-agents-sdk",
+    title: "The Rise of Agent Frameworks",
+    excerpt: "From OpenAI Swarm to Claude Code SDK, the agent wars are heating up. Here's what it means for developers.",
+    date: "2026-02-05",
+    category: "Analysis",
+  },
+  {
+    slug: "ai-education-paradigm",
+    title: "Teaching AI to Kids: A New Curriculum",
+    excerpt: "We designed an AI education program for middle schoolers. The results surprised even us.",
+    date: "2026-02-03",
+    category: "Education",
+  }
+];
+
+function ColumnCard({ column, delay }: { column: typeof columns[0]; delay: number }) {
+  const style = categoryStyles[column.category] || categoryStyles["Research"];
+  
+  return (
+    <motion.article
+      className="group cursor-pointer"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay }}
+    >
+      <Link href={`/columns/${column.slug}`}>
+        <div className="flex flex-col md:flex-row gap-6 p-6 glass rounded-2xl hover:border-purple-500/30 transition-all duration-300">
+          {/* Image placeholder with category-specific gradient */}
+          <div className={`w-full md:w-64 h-40 bg-gradient-to-br ${style.gradient} rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-300`}>
+            <span className="text-5xl opacity-60 group-hover:scale-110 transition-transform duration-300">{style.icon}</span>
+          </div>
+          
+          {/* Content */}
+          <div className="flex flex-col justify-center flex-1">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-xs text-purple-400 uppercase tracking-wider font-medium">
+                {column.category}
+              </span>
+              <span className="text-zinc-600">•</span>
+              <span className="text-xs text-zinc-500">{column.date}</span>
+            </div>
+            
+            <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+              {column.title}
+            </h3>
+            
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              {column.excerpt}
+            </p>
+            
+            <div className="mt-4 flex items-center text-purple-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Read more
+              <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.article>
+  );
+}
+
+function Columns() {
+  return (
+    <section id="columns" className="py-32 px-6">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="flex items-center justify-between mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div>
+            <h2 className="text-4xl font-bold text-white mb-2">Columns</h2>
+            <p className="text-zinc-500">Sharp takes on AI, tech, and the future</p>
+          </div>
+          <Link 
+            href="/columns" 
+            className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center gap-1 transition-colors"
+          >
+            View all
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </motion.div>
+        
+        <div className="space-y-6">
+          {columns.map((column, i) => (
+            <ColumnCard key={column.slug} column={column} delay={i * 0.1} />
           ))}
         </div>
       </div>
@@ -326,9 +443,9 @@ function Philosophy() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            &ldquo;우리는 <span className="text-white font-medium">Hype</span>를 쫓지 않습니다.
+            &ldquo;We don&apos;t chase <span className="text-white font-medium">Hype</span>.
             <br />
-            <span className="text-purple-400 font-medium">증명</span>합니다.&rdquo;
+            We <span className="text-purple-400 font-medium">prove</span> it.&rdquo;
           </motion.p>
           
           <motion.div 
@@ -380,6 +497,14 @@ function Footer() {
     <footer className="py-12 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <Logo />
+        <div className="flex items-center gap-6">
+          <Link href="/columns" className="text-zinc-500 hover:text-white text-sm transition-colors">
+            Columns
+          </Link>
+          <Link href="#team" className="text-zinc-500 hover:text-white text-sm transition-colors">
+            Team
+          </Link>
+        </div>
         <p className="text-zinc-600 text-sm">
           © 2026 HypeProof AI. All rights reserved.
         </p>
@@ -406,6 +531,7 @@ export default function Home() {
           <Logo />
           <div className="hidden md:flex items-center gap-8">
             <NavLink href="#features">What We Do</NavLink>
+            <NavLink href="#columns">Columns</NavLink>
             <NavLink href="#team">Team</NavLink>
           </div>
         </div>
@@ -414,6 +540,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <Columns />
         <Philosophy />
         <Team />
       </main>
